@@ -1,0 +1,236 @@
+/* 1. Root Variables & Reset  */
+:root {
+    --bg-dark: #0f172a;
+    --accent-blue: #38bdf8;
+    --text-main: #f8fafc;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s ease;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Mandatory Box Model usage [cite: 27] */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. Navbar Styling (Sticky & Flexbox) [cite: 31, 36] */
+.navbar {
+    position: sticky;
+    top: 0;
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--accent-blue);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: var(--transition); /* Transitions requirement  */
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Hover & Active States [cite: 41] */
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--accent-blue);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-blue);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* 3. Hero Section (Flexbox)  */
+.hero {
+    min-height: calc(100vh - var(--nav-height)); /* Responsive Units [cite: 44] */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive typography [cite: 44] */
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out forwards; /* Animations [cite: 39] */
+}
+
+.highlight {
+    color: var(--accent-blue);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-visual {
+    flex: 1;
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.hero-visual img {
+    width: 100%;
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2));
+}
+
+/* 4. Button Styles [cite: 40, 41] */
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: var(--bg-dark);
+}
+
+.btn-secondary {
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px); /* Hover effects  */
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+/* 5. Keyframes [cite: 39] */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container styling */
+.data-mesh {
+    position: relative; /* Mandatory Positioning [cite: 35, 36] */
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+}
+
+/* Background Grid - creates a "technical" feel */
+.grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(var(--glass-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle, black, transparent);
+    opacity: 0.5;
+}
+
+/* Central Data Core */
+.core {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 50px var(--accent-blue);
+    animation: corePulse 3s infinite ease-in-out; /* Mandatory Animation [cite: 39] */
+}
+
+/* Data Nodes */
+.node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 2px; /* Square nodes look more like data bits */
+    box-shadow: 0 0 15px var(--accent-blue);
+}
+
+/* Floating Path Animations [cite: 40, 41] */
+.n1 { animation: float1 6s infinite ease-in-out; }
+.n2 { animation: float2 8s infinite ease-in-out; }
+.n3 { animation: float1 10s infinite ease-in-out reverse; }
+.n4 { animation: float2 12s infinite ease-in-out reverse; }
+
+/* Keyframes for complex movement  */
+@keyframes corePulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(120px, -50px); }
+    50% { transform: translate(-120px, 50px); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(-80px, -120px); }
+    50% { transform: translate(80px, 120px); }
+}
