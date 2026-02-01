@@ -563,3 +563,62 @@ input:valid:not(:placeholder-shown) {
     margin-bottom: 2rem;
     color: #cbd5e1;
 }
+
+/* ===== RESPONSIVENESS (Media Queries) ===== */
+
+/* 1. Tablets and Small Laptops (Max width 992px) */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column; /* Stack hero text and visual */
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .dashboard-wrapper {
+        flex-direction: column; /* Stack Bio and Skills cards */
+        gap: 1.5rem;
+    }
+
+    .about-bio, .skills-panel {
+        flex: 1 1 100%; /* Force cards to take full width */
+    }
+}
+
+/* 2. Mobile Devices (Max width 600px) */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 5%;
+    }
+
+    .section-title {
+        font-size: 2rem; /* Use relative scaling for typography */
+    }
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    /* Adjust Navigation for Mobile */
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Stack Project Cards in a single column */
+    .project-gallery {
+        grid-template-columns: 1fr; 
+    }
+
+    .card-glass {
+        padding: 1.5rem; /* Reduce padding on small screens */
+    }
+
+    .footer-content {
+        padding-bottom: 2rem;
+    }
+
+    .social-links {
+        flex-direction: column; /* Stack social icons */
+        gap: 1rem;
+    }
+}
