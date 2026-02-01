@@ -7,12 +7,17 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --transition: all 0.3s ease;
     --nav-height: 80px;
+    --card-bg: rgba(15, 23, 42, 0.6);
+    --card-border: rgba(56, 189, 248, 0.2);
+    --card-hover-border: rgba(56, 189, 248, 0.5);
+    --glow: rgba(56, 189, 248, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Mandatory Box Model usage [cite: 27] */
+    box-sizing: border-box; 
 }
 
 body {
@@ -57,7 +62,7 @@ body {
     text-decoration: none;
     color: var(--text-main);
     font-weight: 500;
-    transition: var(--transition); /* Transitions requirement  */
+    transition: var(--transition);
     position: relative;
     padding: 5px 0;
 }
@@ -86,7 +91,7 @@ body {
 
 /* 3. Hero Section (Flexbox)  */
 .hero {
-    min-height: calc(100vh - var(--nav-height)); /* Responsive Units [cite: 44] */
+    min-height: calc(100vh - var(--nav-height));
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -99,9 +104,9 @@ body {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive typography [cite: 44] */
+    font-size: clamp(2.5rem, 5vw, 4rem); 
     margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease-out forwards; /* Animations [cite: 39] */
+    animation: fadeInUp 0.8s ease-out forwards; 
 }
 
 .highlight {
@@ -154,7 +159,7 @@ body {
 }
 
 .btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px); /* Hover effects  */
+    transform: translateY(-3px); 
     box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
 }
 
@@ -170,67 +175,207 @@ body {
     }
 }
 
-/* Container styling */
+/* Ensure the mesh container is visible and centered */
 .data-mesh {
-    position: relative; /* Mandatory Positioning [cite: 35, 36] */
-    width: 400px;
-    height: 400px;
+    position: relative; 
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
 }
 
-/* Background Grid - creates a "technical" feel */
+/* The Background Grid Pattern */
 .grid-bg {
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(var(--glass-border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-    background-size: 40px 40px;
+        linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
     mask-image: radial-gradient(circle, black, transparent);
     opacity: 0.5;
 }
 
-/* Central Data Core */
+/* The Central Core Pulse */
 .core {
     width: 60px;
     height: 60px;
     background: var(--accent-blue);
     border-radius: 50%;
-    box-shadow: 0 0 50px var(--accent-blue);
-    animation: corePulse 3s infinite ease-in-out; /* Mandatory Animation [cite: 39] */
+    box-shadow: 0 0 40px var(--accent-blue);
+    animation: pulseCore 2s infinite ease-in-out; 
 }
 
-/* Data Nodes */
+/* The Floating Nodes (Data Bits) */
 .node {
-    position: absolute;
-    width: 12px;
-    height: 12px;
+    position: absolute; /* Position Requirement  */
+    width: 10px;
+    height: 10px;
     background: #fff;
-    border-radius: 2px; /* Square nodes look more like data bits */
-    box-shadow: 0 0 15px var(--accent-blue);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--accent-blue);
 }
 
-/* Floating Path Animations [cite: 40, 41] */
+/* Individual Node Movement Paths */
 .n1 { animation: float1 6s infinite ease-in-out; }
 .n2 { animation: float2 8s infinite ease-in-out; }
 .n3 { animation: float1 10s infinite ease-in-out reverse; }
 .n4 { animation: float2 12s infinite ease-in-out reverse; }
 
-/* Keyframes for complex movement  */
-@keyframes corePulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
+/* NEW KEYFRAMES - Add these at the bottom */
+@keyframes pulseCore {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 1; }
 }
 
 @keyframes float1 {
-    0%, 100% { transform: translate(120px, -50px); }
-    50% { transform: translate(-120px, 50px); }
+    0%, 100% { transform: translate(120px, -60px); }
+    50% { transform: translate(-120px, 60px); }
 }
 
 @keyframes float2 {
-    0%, 100% { transform: translate(-80px, -120px); }
-    50% { transform: translate(80px, 120px); }
+    0%, 100% { transform: translate(-80px, -130px); }
+    50% { transform: translate(80px, 130px); }
+}
+
+/* ABOUT ME */
+/* Container and Layouts */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.dashboard-wrapper {
+    display: flex; 
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-top: 3rem;
+}
+
+.about-bio, .skills-panel {
+    flex: 1 1 450px; 
+}
+
+/* Card Styling to match index.html */
+.card-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: var(--transition-smooth);
+}
+
+/* Certification Grid */
+.layout-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.cert-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.cert-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Badge Cloud Polish */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.badge-outline {
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 5px 15px;
+    border-radius: 50px; 
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.badge-outline:hover {
+    background: var(--accent-blue);
+    color: var(--bg-dark);
+}
+
+.cert-card {
+    overflow: hidden; 
+    position: relative;
+    transition: var(--transition-smooth); 
+}
+
+.cert-img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.5s ease; 
+}
+
+/* Hover: Zoom Image and Glow Card */
+.cert-card:hover {
+    transform: translateY(-10px); 
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3); 
+}
+
+.cert-card:hover .cert-img {
+    transform: scale(1.05); 
+}
+
+/* ===== FOOTER & SOCIAL LINKS ===== */
+.footer {
+    padding: 3rem 10%;
+    background: var(--glass-bg);
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-content {
+    display: flex; 
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    transition: var(--transition); 
+}
+
+/* Social Icon Hover State */
+.social-icon:hover {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-3px); 
 }
