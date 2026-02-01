@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurika Bhatt | Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">GB 🔹</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section contact" id="contact">
+        <div class="container container-narrow">
+            <header class="section-header fade-in">
+                <h1 class="section-title">Get In <span class="highlight">Touch</span></h1>
+                <p class="section-subtitle">Have a data problem or an AI project in mind? Let's collaborate.</p>
+            </header>
+
+            <div class="card card-glass contact-card">
+                <form action="#success" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="success" class="popup-overlay">
+            <div class="popup-content card-glass">
+                <span class="success-icon">✅</span>
+                <h2>Message Received!</h2>
+                <p>Thank you for reaching out! Your message has been sent successfully. Gaurika will get back to you shortly.</p>
+                <a href="#" class="btn-primary">Close</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 Gaurika Bhatt | Portfolio</p>
+            <div class="social-links">
+                <a href="https://github.com/Gaurikabhatt27" target="_blank" class="social-icon" title="GitHub">
+                    <span class="icon">🧑‍💻</span> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/gaurika-bhatt-869600283/" target="_blank" class="social-icon" title="LinkedIn">
+                    <span class="icon">🧑‍💼</span> LinkedIn
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=jrjtWvMZsHvZVfXXpPgvTNJptDZvKKptvxMrvxSFmTVCkVhFsClPTWHLZFStXmzBKMPDqQzq" class="social-icon" title="Email Me">
+                    <span class="icon">✉️</span> Email
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
